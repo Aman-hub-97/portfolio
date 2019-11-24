@@ -43,7 +43,7 @@
               <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="#">Twitter</a>
                 <a class="nav-item nav-link" href="#">Resume</a>
-                <a class="nav-item nav-link" href="{% url 'allblogs'%}">Blog</a>
+                <a class="nav-item nav-link active" href="#">Blog</a>
                 
               </div>
             </div>
@@ -51,39 +51,34 @@
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Hi, I'm Aman.</h1>
-      <p class="lead text-muted">Hey, my name is Aman and I love to work on Django websites and Data Analytics. I love to handling the requests that the people want! Right now I'm working on Deep Learning.</p>
-      <p>
-        <a href="mailto:aman14102007@gmail.com" class="btn btn-primary my-2">E-mail Me</a>
-      </p>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        {% for job in jobs.all%}
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{job.image.url}}" >
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
+        <h1 class="text-center pt-3">Welcome to Aman's Blog</h1>
+        <br/>
+        <br/>
+        <h2>Latest Post</h2>
+        <hr/>
+        <div class="col">
+        {% for blog in blogs.all%}
+            <a href="{% url 'detail' blog_id=blog.id %}"><h3>{{blog.title}}</h3></a>
+            <h6>{{blog.pub_date}}</h6>
+            <img class="img-fluid" src="{{blog.image.url}}" height=200 width=200 />
+            <br/>
+            <p>{{blog.summary}}</p>
+        <!--<div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <h4>{{blog.title}}</h4>
+                <p>{{blog.pub_date}}</p>
+                <img class="card-img-top" src="{{blog.image.url}}" >
+                <div class="card-body">
+                    <p class="card-text">{{ blog.body }}</p>
+                </div>
             </div>
-            
-          </div>
+              
+        </div>-->
+        {% endfor %}
         </div>
-        {% endfor%}
-      </div>
-        
-      
-      
     </div>
-  </div>
-
+       
 </main>
 
 <footer class="text-muted">
