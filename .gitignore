@@ -16,3 +16,4 @@ db.sqlite3-journal
 settings.py
 
 portfolio/portfolio/settings.py
+portfolio/settings.py
